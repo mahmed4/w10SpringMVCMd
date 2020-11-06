@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert New Classes</title>
+</head>
+<body>
+<h2>Add or Update Classes By Instructors</h2>
+<form th:object="${newClassInstructors}"
+th:action= "@{/update/{id}(id=${newClassInstructors.id})}"  method=POST>
+
+<label for="fname">Instructor First name:</label><br>
+<input name="firstName" size="20" 
+th:field="*{firstName}"><br /><br />
+
+<label for="fname">Instructor Last Name:</label><br>
+<input name="lastName" size="20" 
+th:field="*{lastName}"><br /><br />
+
+<label for="fname">Email:</label><br>
+<input name="email" size="20" th:field="*{email}"><br /><br />
+
+<label for="fname">Class:</label><br>
+<input name="classItems.className" size="20"
+th:field="*{classItems.className}"><br /><br />
+
+<label for="fname">Prerequisite:</label><br>
+<input name="classItems.preRequisite" size="20"
+th:field="*{classItems.preRequisite}"><br /><br />
+
+<label for="fname">Type:</label><br>
+<input name="classItems.classType" size="20"
+th:field="*{classItems.classType}"><br /><br />
+
+<label for="fname">Size:</label><br>
+<input name="classItems.classSize" size="20"
+th:field="*{classItems.classSize}"><br /><br />
+
+<input name="submit" type="submit" value="submit" />
+</form>
+<a href="viewAll">View all Classes available for Spring</a>
+</body>
+</html>

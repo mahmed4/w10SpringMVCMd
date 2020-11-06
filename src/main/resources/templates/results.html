@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Spring Classes</title>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+<h2>List of Available Classes for Spring 2021</h2>
+<form>
+<table>
+ <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+     <th>Class</th>
+    <th>Prerequisite</th>
+    <th>Type</th>
+    <th>Size</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  
+<tr th:each="currentClassInstructors : ${classInstructors}" >
+<td th:text="${currentClassInstructors.firstName}" />
+<td th:text="${currentClassInstructors.lastName}" />
+<td th:text="${currentClassInstructors.email}" />
+<td th:text="${currentClassInstructors.classItems.className}" />
+<td th:text="${currentClassInstructors.classItems.preRequisite}" />
+<td th:text="${currentClassInstructors.classItems.classType}" />
+<td th:text="${currentClassInstructors.classItems.classSize}" />
+<td><a th:href="@{/edit/{id}(id=${currentClassInstructors.id})}">Edit</a></td>
+<td><a th:href="@{/delete/{id}(id=${currentClassInstructors.id})}">Delete</a></td>
+</tr>
+</table>
+</form>
+<a href="../inputClassInstructors">Add new Class</a>
+</body>
+</html>
